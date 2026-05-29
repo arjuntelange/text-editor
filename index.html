@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rich Text Editor</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -21,9 +21,57 @@
   </head>
   <body>
     <div class="container">
-      <div id="content" contenteditable="true">
-        Lorem ipsum
+      <div class="toolbar">
+        <div class="head">
+          <input
+            type="text"
+            placeholder="File Name"
+            id="filename"
+          />
+
+          <select>
+            <option value="" selected hidden>File</option>
+            <option value="">New File</option>
+            <option value="">Save as txt</option>
+            <option value="">Save as pdf</option>
+          </select>
+
+          <select>
+            <option value="" selected hidden>Format</option>
+            <option value="">H1</option>
+            <option value="">H2</option>
+            <option value="">H3</option>
+            <option value="">H4</option>
+            <option value="">H5</option>
+            <option value="">H6</option>
+            <option value="">Paragraph</option>
+          </select>
+
+          <select>
+            <option value="" selected hidden>Font Size</option>
+            <option value="">Extra Small</option>
+            <option value="">Small</option>
+            <option value="">Medium</option>
+            <option value="">Large</option>
+            <option value="">Extra Large</option>
+            <option value="">Big</option>
+          </select>
+
+          <div class="color">
+            <span>Color</span>
+            <input type="color">
+          </div>
+
+          <div class="color">
+            <span>Background</span>
+            <input type="color">
+          </div>
+        </div>
+
+        <div class="btn-toolbar"></div>
       </div>
+
+      <div id="content" contenteditable="true"></div>
     </div>
   </body>
 </html>
