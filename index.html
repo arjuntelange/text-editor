@@ -12,6 +12,13 @@
       rel="stylesheet"
     />
 
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+      integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -25,11 +32,16 @@
         <div class="head">
           <input type="text" placeholder="File Name" id="filename" />
 
-          <select>
+          <select
+            onchange="
+              handleFileExport(this.value);
+              this.selectedIndex = 0;
+            "
+          >
             <option value="" selected hidden>File</option>
-            <option value="">New File</option>
-            <option value="">Save as txt</option>
-            <option value="">Save as pdf</option>
+            <option value="new">New File</option>
+            <option value="txt">Save as txt</option>
+            <option value="pdf">Save as pdf</option>
           </select>
 
           <select
@@ -65,21 +77,14 @@
 
           <div class="color">
             <span>Color</span>
-            <input
-              type="color"
-              oninput="
-                formatDoc('foreColor', this.value);
-              "
-            />
+            <input type="color" oninput="formatDoc('foreColor', this.value)" />
           </div>
 
           <div class="color">
             <span>Background</span>
             <input
               type="color"
-              oninput="
-                formatDoc('hiliteColor', this.value);
-              "
+              oninput="formatDoc('hiliteColor', this.value)"
             />
           </div>
         </div>

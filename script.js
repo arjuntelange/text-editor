@@ -27,3 +27,39 @@ content.addEventListener("mouseenter", () => {
     });
   });
 });
+
+let fileName = document.getElementById("filename");
+
+const handleFileExport = (value) => {
+  const name = fileName.value.trim() || "document";
+
+  if (value === "new") {
+    content.innerHTML = "";
+    fileName.value = "";
+  }
+
+  if (value === "pdf") {
+    html2pdf().from(content).save(`${name}.pdf`);
+  }
+
+  if (value === "txt") {
+    const extractedText = content.innerText;
+
+    const blob = new Blob([extractedText], {
+      type: "text/plain",
+    });
+
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+
+    a.href = url;
+    a.download = `${name}.txt`;
+
+    a.click();
+
+    setTimeout(() => {
+      URL.revokeObjectURL(url);
+    }, 100);
+  }
+};
