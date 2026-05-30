@@ -63,3 +63,19 @@ const handleFileExport = (value) => {
     }, 100);
   }
 };
+
+
+let active = false;
+let showCode = document.getElementById("show-code");
+showCode.addEventListener("click", () => {
+  active = !active;
+  showCode.dataset.active = active;
+  if(active) {
+    content.textContent = content.innerHTML;
+    showCode.setAttribute("contenteditable", false);
+  }
+  else {
+    content.innerHTML = content.textContent;
+    showCode.setAttribute("contenteditable", true);
+  }
+})
