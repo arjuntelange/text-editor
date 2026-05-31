@@ -36,6 +36,7 @@ const handleFileExport = (value) => {
   if (value === "new") {
     content.innerHTML = "";
     fileName.value = "";
+    localStorage.removeItem("editorContent");
   }
 
   if (value === "pdf") {
@@ -79,3 +80,15 @@ showCode.addEventListener("click", () => {
     showCode.setAttribute("contenteditable", true);
   }
 })
+
+content.addEventListener("input", () => {
+  localStorage.setItem("editorContent", content.innerHTML);
+});
+
+window.addEventListener("load", () => {
+  const savedContent = localStorage.getItem("editorContent");
+
+  if (savedContent) {
+    content.innerHTML = savedContent;
+  }
+});

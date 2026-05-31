@@ -136,6 +136,11 @@ body {
   transition: all 0.2s ease;
 }
 
+.btn-toolbar button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.2);
+}
+
 #content {
   padding: 24px;
 
