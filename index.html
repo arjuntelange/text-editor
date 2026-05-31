@@ -132,11 +132,18 @@
           <button type="button" onclick="formatDoc('unlink')">
             <i class="fa-solid fa-link-slash"></i>
           </button>
-          <button type="button" data-active="false" id="show-code"><i class="fa-solid fa-code"></i></button>
+          <button type="button" data-active="false" id="show-code">
+            <i class="fa-solid fa-code"></i>
+          </button>
         </div>
       </div>
 
       <div id="content" contenteditable="true"></div>
+
+      <div class="status-bar">
+        <span id="word-count">Words: 0</span>
+        <span id="char-count">Characters: 0</span>
+      </div>
 
       <script src="script.js"></script>
     </div>

@@ -65,21 +65,19 @@ const handleFileExport = (value) => {
   }
 };
 
-
 let active = false;
 let showCode = document.getElementById("show-code");
 showCode.addEventListener("click", () => {
   active = !active;
   showCode.dataset.active = active;
-  if(active) {
+  if (active) {
     content.textContent = content.innerHTML;
     showCode.setAttribute("contenteditable", false);
-  }
-  else {
+  } else {
     content.innerHTML = content.textContent;
     showCode.setAttribute("contenteditable", true);
   }
-})
+});
 
 content.addEventListener("input", () => {
   localStorage.setItem("editorContent", content.innerHTML);
@@ -92,3 +90,19 @@ window.addEventListener("load", () => {
     content.innerHTML = savedContent;
   }
 });
+
+const wordCount = document.getElementById("word-count");
+const charCount = document.getElementById("char-count");
+
+const updateCounts = () => {
+  const text = content.innerText.trim();
+
+  const words = text ? text.split(/\s+/).length : 0;
+  const chars = text.length;
+
+  wordCount.textContent = `Words: ${words}`;
+  charCount.textContent = `Characters: ${chars}`;
+};
+
+content.addEventListener("input", updateCounts);
+window.addEventListener("load", updateCounts);
